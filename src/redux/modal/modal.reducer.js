@@ -6,11 +6,8 @@ const initialState = {
 };
 
 const modalSlice = createSlice({
-  // Ім'я слайсу
   name: 'modal',
-  // Початковий стан редюсера слайсу
   initialState,
-  // Об'єкт редюсерів
   reducers: {
     openModal: (state, { payload }) => {
       state.isOpenModal = true;
@@ -23,7 +20,5 @@ const modalSlice = createSlice({
   },
 });
 
-// Генератори екшен криейторів
 export const { openModal, closeModal } = modalSlice.actions;
-// Редюсер слайсу
 export const modalReducer = modalSlice.reducer;
