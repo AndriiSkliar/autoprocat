@@ -1,0 +1,74 @@
+:root {
+  --second-family: 'Montserrat', sans-serif;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-weight: 400;
+  src: url('/src/fonts/Manrope-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-weight: 500;
+  src: url('/src/fonts/Manrope-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-weight: 600;
+  src: url('/src/fonts/Manrope-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  src: url('/src/fonts/Montserrat-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 600;
+  src: url('/src/fonts/Montserrat-SemiBold.ttf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  /* color: var(--primary-text-color);
+  background-color: var(--background-color); */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
