@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAutos, fetchBaseAutos } from '../../redux/autos/autos.operations';
-import { selectAutos, selectError, selectIsLoaded, selectIsLoading, selectPage } from '../../redux/selectors/autos.selectors';
+import { fetchAutos } from '../../redux/autos/autos.operations';
+import { selectAutos, selectError, selectIsLoading, selectPage } from '../../redux/selectors/autos.selectors';
+import { incrementPage } from '../../redux/autos/autos.reducer';
 import { Loader } from '../../components/Loader/Loader';
 import AutosList from '../../components/AutosList/AutosList';
 import SearchSelectBrands from '../../components/Select/SearchSelectBrands';
@@ -12,14 +13,20 @@ const CatalogPage = () => {
   const autos = useSelector(selectAutos);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const isLoaded = useSelector(selectIsLoaded);
   const page = useSelector(selectPage);
   const [autosBrand, setAutosBrands] = useState('');
   const [autosPrice, setAutosPrice] = useState('');
   
   useEffect(() => { 
-    if (!isLoaded) dispatch(fetchBaseAutos(page));
-  }, [dispatch, isLoaded, page]);
+    if (autos.length === 0) {
+      dispatch(fetchAutos(page)); 
+    }
+  }, [dispatch, autos.length, page]);
+  
+  const handleLoadMoreClick = () => {
+    dispatch(incrementPage())
+    dispatch(fetchAutos(page + 1)); 
+  };
   
   return (
     <main className="container">
@@ -30,7 +37,7 @@ const CatalogPage = () => {
         <SearchSelectPrice setAutosPrice={setAutosPrice} />
       </div>
       <AutosList autos={autos} />
-      {autos.length > 11 && <button type='button' onClick={() => dispatch(fetchAutos(page + 1))}>Load more...</button>}
+      {autos.length > 11 && <button type='button' onClick={handleLoadMoreClick}>Load more...</button>}
     </main>
   );
 };

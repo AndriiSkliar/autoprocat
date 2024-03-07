@@ -1,15 +1,10 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import {
-  fetchBaseAutos,
-  fetchAutos,
-  fetchAutosBrands,
-} from './autos.operations';
+import { fetchAutos, fetchAutosBrands } from './autos.operations';
 
 const initialState = {
   autos: [],
   favorites: [],
   autosBrands: [],
-  isLoaded: false,
   page: 1,
   isLoading: false,
   error: null,
@@ -18,17 +13,15 @@ const initialState = {
 const autosSlice = createSlice({
   name: 'autos',
   initialState,
-  reducers: {},
+  reducers: {
+    incrementPage(state) {
+      state.page += 1;
+    },
+  },
   extraReducers: (builder) =>
     builder
-      .addCase(fetchBaseAutos.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.isLoaded = true;
-        state.autos.push(...payload);
-      })
       .addCase(fetchAutos.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.page += 1;
         state.autos.push(...payload);
       })
       .addCase(fetchAutosBrands.fulfilled, (state, { payload }) => {
@@ -36,22 +29,14 @@ const autosSlice = createSlice({
         state.autosBrands = payload;
       })
       .addMatcher(
-        isAnyOf(
-          fetchBaseAutos.pending,
-          fetchAutos.pending,
-          fetchAutosBrands.pending
-        ),
+        isAnyOf(fetchAutos.pending, fetchAutosBrands.pending),
         (state) => {
           state.isLoading = true;
           state.error = null;
         }
       )
       .addMatcher(
-        isAnyOf(
-          fetchBaseAutos.rejected,
-          fetchAutos.rejected,
-          fetchAutosBrands.rejected
-        ),
+        isAnyOf(fetchAutos.rejected, fetchAutosBrands.rejected),
         (state, { payload }) => {
           state.isLoading = false;
           state.error = payload;
@@ -59,3 +44,5 @@ const autosSlice = createSlice({
       ),
 });
 export const autosReducer = autosSlice.reducer;
+
+export const { incrementPage } = autosSlice.actions;
