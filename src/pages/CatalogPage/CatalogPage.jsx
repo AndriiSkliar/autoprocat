@@ -1,38 +1,36 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAutos } from '../../redux/autos/autos.operations';
+import { fetchAutos, fetchBaseAutos } from '../../redux/autos/autos.operations';
+import { selectAutos, selectError, selectIsLoaded, selectIsLoading, selectPage } from '../../redux/selectors/autos.selectors';
 import { Loader } from '../../components/Loader/Loader';
-import { selectAutos, selectError, selectIsLoading } from '../../redux/selectors/autos.selectors';
 import AutosList from '../../components/AutosList/AutosList';
 import SearchSelectBrands from '../../components/Select/SearchSelectBrands';
-
+import SearchSelectPrice from '../../components/Select/SearchSelectPrice';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
+  const autos = useSelector(selectAutos);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const [page, setPage] = useState(1);
-  const autos = useSelector(selectAutos);
+  const isLoaded = useSelector(selectIsLoaded);
+  const page = useSelector(selectPage);
   const [autosBrand, setAutosBrands] = useState('');
+  const [autosPrice, setAutosPrice] = useState('');
   
   useEffect(() => { 
-    dispatch(fetchAutos(page))
-  }, [dispatch, page])
+    if (!isLoaded) dispatch(fetchBaseAutos(page));
+  }, [dispatch, isLoaded, page]);
   
-  const handleLoadMoreClick = () => {
-    setPage(page + 1); 
-  };
-  console.log(autosBrand);
   return (
     <main className="container">
       {error !== null && <p>{error}</p>}
       {isLoading && <Loader />}
       <div>
-        Form
         <SearchSelectBrands setAutosBrands={setAutosBrands} />
+        <SearchSelectPrice setAutosPrice={setAutosPrice} />
       </div>
       <AutosList autos={autos} />
-      {autos.length > 11 && <button type='button' onClick={handleLoadMoreClick}>Load more...</button>}
+      {autos.length > 11 && <button type='button' onClick={() => dispatch(fetchAutos(page + 1))}>Load more...</button>}
     </main>
   );
 };

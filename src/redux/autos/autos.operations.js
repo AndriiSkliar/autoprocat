@@ -9,6 +9,23 @@ const instance = axios.create({
 
 const toastOptions = { position: 'top-center', autoClose: 2000 };
 
+export const fetchBaseAutos = createAsyncThunk(
+  'baseAutos/getAutos',
+  async (page, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.get('adverts', {
+        params: {
+          page: page,
+          limit: 12,
+        },
+      });
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const fetchAutos = createAsyncThunk(
   'autos/get',
   async (page, { rejectWithValue }) => {

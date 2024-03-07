@@ -1,32 +1,26 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchAutosBrands } from '../../redux/autos/autos.operations.js';
-import { selectAutosBrands, selectError, selectIsLoading } from '../../redux/selectors/autos.selectors.js';
-import { Loader } from '../Loader/Loader.jsx';
+import { selectAutosBrands, selectIsLoaded } from '../../redux/selectors/autos.selectors.js';
 import { nanoid } from 'nanoid'
 
 const SearchSelectBrands = ({setAutosBrands}) => {
   const dispatch = useDispatch();
   const autosBrands = useSelector(selectAutosBrands);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const isLoaded = useSelector(selectIsLoaded);
 
-    useEffect(() => {
-    dispatch(fetchAutosBrands());
+  useEffect(() => {
+    if(!isLoaded) dispatch(fetchAutosBrands());
   }, [dispatch]);
 
   const searchByBrand = (e) => {
     e.preventDefault();
-    const brandParam = e.target.value;
+    const brandParam = e.target.value !== 'hide' ? e.target.value : '';
+    setAutosBrands(brandParam);
+  }
 
-    if (brandParam !== 'hide') setAutosBrands(brandParam);
-    if (brandParam === 'hide') setAutosBrands('');
-    };
-    
   return (
     <>
-      {isLoading && <Loader />}
-      {error && <p>Error: {error}</p>}
       <select
         id="autosBrands"
         name="autosBrands"
