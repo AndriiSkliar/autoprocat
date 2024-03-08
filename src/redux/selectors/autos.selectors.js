@@ -4,3 +4,4 @@ export const selectAutosBrands = (state) => state.autosStore.autosBrands;
 export const selectPage = (state) => state.autosStore.page;
 export const selectIsLoading = (state) => state.autosStore.isLoading;
 export const selectError = (state) => state.autosStore.error;
+export const selectSearchResult = (state) => state.autosStore.searchResult;

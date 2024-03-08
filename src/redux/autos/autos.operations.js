@@ -11,11 +11,11 @@ const toastOptions = { position: 'top-center', autoClose: 2000 };
 
 export const fetchAutos = createAsyncThunk(
   'autos/get',
-  async (page, { rejectWithValue }) => {
+  async (currentPage, { rejectWithValue }) => {
     try {
       const { data } = await instance.get('adverts', {
         params: {
-          page: page,
+          page: currentPage,
           limit: 12,
         },
       });
@@ -47,6 +47,23 @@ export const fetchAutosBrands = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await instance.get('brands');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchSelectedAutos = createAsyncThunk(
+  'selectedAutos/fetchAutos',
+  async (params, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.get('adverts', {
+        params: {
+          limit: 12,
+          ...params,
+        },
+      });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

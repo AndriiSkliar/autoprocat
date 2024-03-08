@@ -1,5 +1,9 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchAutos, fetchAutosBrands } from './autos.operations';
+import {
+  fetchAutos,
+  fetchAutosBrands,
+  fetchSelectedAutos,
+} from './autos.operations';
 
 const initialState = {
   autos: [],
@@ -8,6 +12,7 @@ const initialState = {
   page: 1,
   isLoading: false,
   error: null,
+  searchResult: [],
 };
 
 const autosSlice = createSlice({
@@ -16,6 +21,15 @@ const autosSlice = createSlice({
   reducers: {
     incrementPage(state) {
       state.page += 1;
+    },
+    decrementPage(state) {
+      state.page = 1;
+    },
+    addToFavorites(state, { payload }) {
+      state.favorites.push(payload);
+    },
+    removeFromFavorites(state, { payload }) {
+      state.favorites = state.favorites.filter((auto) => auto.id !== payload);
     },
   },
   extraReducers: (builder) =>
@@ -28,15 +42,27 @@ const autosSlice = createSlice({
         state.isLoading = false;
         state.autosBrands = payload;
       })
+      .addCase(fetchSelectedAutos.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.searchResult = payload;
+      })
       .addMatcher(
-        isAnyOf(fetchAutos.pending, fetchAutosBrands.pending),
+        isAnyOf(
+          fetchAutos.pending,
+          fetchAutosBrands.pending,
+          fetchSelectedAutos.pending
+        ),
         (state) => {
           state.isLoading = true;
           state.error = null;
         }
       )
       .addMatcher(
-        isAnyOf(fetchAutos.rejected, fetchAutosBrands.rejected),
+        isAnyOf(
+          fetchAutos.rejected,
+          fetchAutosBrands.rejected,
+          fetchSelectedAutos.rejected
+        ),
         (state, { payload }) => {
           state.isLoading = false;
           state.error = payload;
@@ -45,4 +71,9 @@ const autosSlice = createSlice({
 });
 export const autosReducer = autosSlice.reducer;
 
-export const { incrementPage } = autosSlice.actions;
+export const {
+  incrementPage,
+  decrementPage,
+  addToFavorites,
+  removeFromFavorites,
+} = autosSlice.actions;
