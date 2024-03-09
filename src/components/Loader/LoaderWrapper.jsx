@@ -1,4 +1,25 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const moveInOut = keyframes`
+  0% {
+    transform: translateX(0%);
+  }
+  15% {
+    transform: translateX(15%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  50.1% {
+    transform: translateX(-100%);
+  }
+  85% {
+    transform: translateX(-15%);
+  }
+  100% {
+    transform: translateX(0%);
+  } 
+`;
 
 export const LoaderWrapper = styled.div`
   position: fixed;
@@ -7,4 +28,9 @@ export const LoaderWrapper = styled.div`
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
+  overflow: hidden;
+`;
+
+export const IconAutoWrapper = styled.div`
+  animation: ${moveInOut} 1s linear 0s infinite normal forwards running;
 `;

@@ -62,10 +62,10 @@ const PopUp = () => {
           <img src={img} alt={make + model} />
         </div>
         <div>
-          <h3>{make}{' '}
+          <h2>{make}{' '}
             <span>{model}</span>,{' '}
             {year}
-          </h3>
+          </h2>
         </div>
         <ul>
           <li>{city}</li>
@@ -79,7 +79,7 @@ const PopUp = () => {
           <li>Engine Size: {engineSize}</li>
         </ul>
         <p>{description}</p>
-        <h4>Accessories and functionalities:</h4>
+        <h3>Accessories and functionalities:</h3>
         <ul>
           {accessories.map((accessorie, i) => (
             <li key={i}>{accessorie}</li>
@@ -90,7 +90,7 @@ const PopUp = () => {
             <li key={i}>{functionalitie}</li>
           ))}
         </ul>
-        <h4>Rental Conditions:</h4>
+        <h3>Rental Conditions:</h3>
         <ul>
           {conditionsList}
         </ul>

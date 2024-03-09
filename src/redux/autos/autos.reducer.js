@@ -31,6 +31,9 @@ const autosSlice = createSlice({
     removeFromFavorites(state, { payload }) {
       state.favorites = state.favorites.filter((auto) => auto.id !== payload);
     },
+    reset(state) {
+      state.searchResult = [];
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -44,7 +47,7 @@ const autosSlice = createSlice({
       })
       .addCase(fetchSelectedAutos.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.searchResult = payload;
+        state.searchResult.push(...payload);
       })
       .addMatcher(
         isAnyOf(
@@ -76,4 +79,5 @@ export const {
   decrementPage,
   addToFavorites,
   removeFromFavorites,
+  reset,
 } = autosSlice.actions;

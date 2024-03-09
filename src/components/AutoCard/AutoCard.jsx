@@ -51,10 +51,10 @@ const AutoCard = ({ auto }) => {
         )}
       </div>
       <div>
-        <h3>{make}{' '}
+        <h2>{make}{' '}
           <span>{model}</span>,{' '}
           {year}
-        </h3>
+        </h2>
         <span>{rentalPrice}</span>
       </div>
       <ul>

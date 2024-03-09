@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAutos, fetchSelectedAutos } from '../../redux/autos/autos.operations';
 import { selectAutos, selectError, selectIsLoading, selectPage, selectSearchResult } from '../../redux/selectors/autos.selectors';
-import { incrementPage, decrementPage } from '../../redux/autos/autos.reducer';
+import { incrementPage, decrementPage, reset } from '../../redux/autos/autos.reducer';
 import { selectIsOpenModal } from '../../redux/selectors/modal.selectors';
-import { Loader } from '../../components/Loader/Loader';
+import NotFound from '../../components/NotFound/NotFound';
 import AutosList from '../../components/AutosList/AutosList';
 import MyForm from '../../components/Select/MyForm';
 import Button from '../../components/Button/Button';
 import PopUp from '../../components/PopUp/PopUp';
+import Loader from '../../components/Loader/Loader';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -18,12 +19,7 @@ const CatalogPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const page = useSelector(selectPage);
-  const [searchParams, setSearchParams] = useState({
-    min: '',
-    max: '',
-    make: '',
-    rentalPrice: '',
-  });
+  const [searchParams, setSearchParams] = useState(null);
 
   useEffect(() => { 
     if (autos.length === 0) {
@@ -32,12 +28,14 @@ const CatalogPage = () => {
   }, [dispatch, autos.length, page]);
 
   useEffect(() => { 
-    const { make, rentalPrice } = searchParams;
-    if (make || rentalPrice) {
+    reset();
+    if (searchParams !== null) {
+      const { make, rentalPrice } = searchParams;
+      dispatch(reset());
       dispatch(decrementPage());
       dispatch(fetchSelectedAutos({ make, rentalPrice, page: 1 }));
     }
-  }, [dispatch,searchParams]);
+  }, [dispatch, searchParams]);
   
   const handleLoadMoreClick = () => {
     dispatch(incrementPage())
@@ -52,27 +50,29 @@ const CatalogPage = () => {
 
   const searchCount = searchResult.length;
   const shouldShowAutosList = !isLoading && (autos.length > 0 && searchCount === 0 || searchCount > 0);
-  const shouldShowLoadMoreButton = !isLoading && autos.length > 11 && searchCount === 0;
-  const searchShowLoadMoreButton = !isLoading && searchCount > 11;
+  const shouldShowLoadMoreButton = !error && !isLoading && autos.length > 11 && searchCount === 0;
+  const searchShowLoadMoreButton = !error && !isLoading && searchCount > 11;
 
   return (
     <main className="container">
-      {error !== null && <p>{error}</p>}
       {isLoading && <Loader />}
-
-      <MyForm setSearchParams={setSearchParams}/>
-
-      {shouldShowAutosList && (
-        <AutosList autos={searchCount > 0 ? searchResult : autos} />
+      <MyForm setSearchParams={setSearchParams} />
+      
+      {error === 404 ? (
+        <NotFound />
+      ) : (
+        shouldShowAutosList && (
+          <AutosList autos={searchCount > 0 ? searchResult : autos} />
+        )
       )}
 
       {shouldShowLoadMoreButton && (
         <Button text="Load more..." onClick={handleLoadMoreClick} />
       )}
-
       {searchShowLoadMoreButton && (
         <Button text="Load more..." onClick={handleSearchLoadMoreClick} />
       )}
+
       {isOpenModal && <PopUp />}
     </main>
   );
