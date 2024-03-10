@@ -23,7 +23,7 @@ const moveInOut = keyframes`
 
 export const LoaderWrapper = styled.div`
   position: fixed;
-  top: 40%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
