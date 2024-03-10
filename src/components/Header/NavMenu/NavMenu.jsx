@@ -1,17 +1,17 @@
-import { NavigationList, NavItem, StyledLink } from "./NavMenu.styled"
+import { NavigationList, StyledLink } from "./NavMenu.styled"
 
 const NavMenu = () => {
   return (
     <NavigationList>
-        <NavItem>
+        <li>
             <StyledLink to="/">Home</StyledLink>
-        </NavItem>
-        <NavItem>
+        </li>
+        <li>
             <StyledLink to="/catalog">Catalog</StyledLink>
-        </NavItem>
-        <NavItem>
+        </li>
+        <li>
             <StyledLink to="/favorites">Favorites</StyledLink>
-        </NavItem>
+        </li>
     </NavigationList>
   );
 };

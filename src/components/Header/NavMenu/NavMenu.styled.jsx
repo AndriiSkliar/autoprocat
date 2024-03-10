@@ -6,13 +6,13 @@ export const NavigationList = styled.ul`
     gap: 20px;
 `;
 
-export const NavItem = styled.li`
-  
-`;
-
 export const StyledLink = styled(NavLink)`
-  
+  transition: box-shadow var(--transition);
+
+  &:hover, &:focus {
+    box-shadow: 0 2px 4px rgba(52, 112, 255, 0.5);
+  }
   &.active {
-    border-bottom: 1px solid red;
+    border-bottom: 2px solid #3470ff;
   }
 `;

@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export const StyledItemWrapper = styled.li`
     width: calc((100% - (3 * 29px)) / 4);
+    min-width: 273px;
 `;
 
 export const StyledImgWrapper = styled.div`
     position: relative;
     overflow: hidden;
     border-radius: 14px;
-    width: 274px;
     height: 268px;
     object-fit: cover;
     background: 

@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const toastOptions = { position: 'bottom-right', autoClose: 1000 };
+const toastOptions = { position: 'top-right', autoClose: 1000 };
 
 export const showWarningToast = (message) => {
   toast.warning(message, toastOptions);

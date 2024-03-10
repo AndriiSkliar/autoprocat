@@ -43,7 +43,7 @@
 body {
   font-family: 'Manrope', sans-serif;
   margin: 0 auto;
-  max-width: 1440px;
+  width: 1440px;
   padding: 0 128px;
   background-color: var(--background-color);
   color: var(--primary-text-color);

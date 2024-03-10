@@ -1,9 +1,11 @@
-import { LogoLink } from './Logo.styled';
+import { ReactComponent as IconCat } from 'assets/icons/cat.svg'
+
+import { LogoAccent, LogoLink } from './Logo.styled';
 
 const Logo = () => {
   return (
     <LogoLink to="/">
-        autoPROcat
+        auto<LogoAccent>PRO</LogoAccent><IconCat/>
     </LogoLink>
   );
 };
