@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.footer`
+export const StyledFooterWrapper = styled.footer`
   margin-top: auto;
 `;

@@ -1,10 +1,10 @@
-import { Wrapper } from './Footer.Styled';
+import { StyledFooterWrapper } from './Footer.Styled';
 
 const Footer = () => {
   return (
-    <Wrapper>
+    <StyledFooterWrapper>
       Footer
-    </Wrapper>
+    </StyledFooterWrapper>
   );
 };
 
