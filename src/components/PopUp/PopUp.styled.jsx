@@ -7,7 +7,7 @@ export const StyledPopUp = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(18, 20, 23, 0.5);;
+  background-color: rgba(18, 20, 23, 0.5);
   &:hover {
     cursor: pointer;
   }
