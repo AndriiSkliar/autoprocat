@@ -40,14 +40,6 @@ const AutoCard = ({ auto }) => {
         {inFavorites ? (
           <StyledButtonWrapper>
             <Button text={<IconFavoriteActive />} 
-            //   style={{
-            //   border: "0",
-            //   padding: "0",
-            //   backgroundColor: "transparent",
-            //   display: "flex",
-            //   justifyContent: "center",
-            //   alignItems: "center",
-            // }}
               onClick={() => {
                 handleDeleteFromFavorites(id);
             }}
@@ -83,12 +75,6 @@ const AutoCard = ({ auto }) => {
         <StyledCountryItem>{displayedAccessory}</StyledCountryItem>
       </StyledCountryList>
       <Button text="Learn more"
-        // style={{
-        //   borderRadius: '12px',
-        //   padding: '12px 99px',
-        //   width: '274px',
-        //   height: '44px',
-        // }}
         onClick={() => dispatch(openModal({ 
           img, 
           make, 
