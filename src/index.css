@@ -1,5 +1,8 @@
 :root {
   --second-family: 'Montserrat', sans-serif;
+  --background-color: #ffffff;
+  --primary-text-color: #8a8a89;
+  --second-color: #121417;
 }
 
 @font-face {
@@ -41,8 +44,8 @@ body {
   margin: 0 auto;
   max-width: 1440px;
   padding: 0 128px;
-  /* color: var(--primary-text-color);
-  background-color: var(--background-color); */
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
 }
 
 h1,

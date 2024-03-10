@@ -6,10 +6,11 @@ import { incrementPage, decrementPage, reset } from '../../redux/autos/autos.red
 import { selectIsOpenModal } from '../../redux/selectors/modal.selectors';
 import NotFound from '../../components/NotFound/NotFound';
 import AutosList from '../../components/AutosList/AutosList';
-import MyForm from '../../components/Select/MyForm';
 import Button from '../../components/Button/Button';
 import PopUp from '../../components/PopUp/PopUp';
 import Loader from '../../components/Loader/Loader';
+import UserForm from '../../components/UserForm/UserForm';
+import { Main } from './CatalogPage.styled';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -54,9 +55,9 @@ const CatalogPage = () => {
   const searchShowLoadMoreButton = !error && !isLoading && searchCount > 11;
 
   return (
-    <main className="container">
+    <Main>
       {isLoading && <Loader />}
-      <MyForm setSearchParams={setSearchParams} />
+      <UserForm setSearchParams={setSearchParams} />
       
       {error === 404 ? (
         <NotFound />
@@ -74,7 +75,7 @@ const CatalogPage = () => {
       )}
 
       {isOpenModal && <PopUp />}
-    </main>
+    </Main>
   );
 };
 

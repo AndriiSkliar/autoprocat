@@ -1,17 +1,14 @@
-import { NavLink } from 'react-router-dom';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
+import { Wrapper } from './Layout.Styled';
 
 const Layout = ({ children }) => {
   return (
-    <div>
-      <header>
-        <nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/catalog">Catalog</NavLink>
-            <NavLink to="/favorites">Favorites</NavLink>
-        </nav>
-      </header>
-      <main>{children}</main>
-    </div>
+    <Wrapper>
+      <Header/>
+      <>{children}</>
+      <Footer />
+    </Wrapper>
   );
 };
 

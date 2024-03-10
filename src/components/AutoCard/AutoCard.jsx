@@ -4,7 +4,8 @@ import { addToFavorites, removeFromFavorites } from '../../redux/autos/autos.red
 import { openModal } from '../../redux/modal/modal.reducer';
 import { ReactComponent as IconFavoriteNormal } from 'assets/icons/favorite-normal.svg'
 import { ReactComponent as IconFavoriteActive } from 'assets/icons/favorite-active.svg'
-import Button from '../Button/Button';
+import Button from '../Button/Button'
+import { StyledItemWrapper, StyledImgWrapper, StyledButtonWrapper, StyledTitleWrapper, StyledTitle, StyledTitleAccent, StyledSpan, StyledCountryList, StyledCountryItem } from './AutoCard.styled';
 
 const AutoCard = ({ auto }) => {
   const {img, make, model, year, rentalPrice, address, rentalCompany, type, id, functionalities, fuelConsumption, engineSize, description, accessories, rentalConditions, mileage } = auto;
@@ -24,8 +25,8 @@ const AutoCard = ({ auto }) => {
   const isLong = firstAccessory.length > maxLength;
   const displayedAccessory = isLong ? (firstAccessory.substring(0, maxLength) + '...') : firstAccessory;
 
-  const handleAddToFavorite = (cocktailId) => {
-    dispatch(addToFavorites(cocktailId));
+  const handleAddToFavorite = (autoId) => {
+    dispatch(addToFavorites(autoId));
   };
 
   const handleDeleteFromFavorites = (autoId) => {
@@ -33,43 +34,61 @@ const AutoCard = ({ auto }) => {
   };
 
   return (
-    <li>
-      <div>
-        <img src={img} alt={make + model} />
+    <StyledItemWrapper>
+      <StyledImgWrapper>
+        <img src={img} alt={make + model}  className="autoImg"/>
         {inFavorites ? (
-          <Button text={<IconFavoriteActive />}
-            onClick={() => {
-              handleDeleteFromFavorites(id);
+          <StyledButtonWrapper>
+            <Button text={<IconFavoriteActive />} 
+            //   style={{
+            //   border: "0",
+            //   padding: "0",
+            //   backgroundColor: "transparent",
+            //   display: "flex",
+            //   justifyContent: "center",
+            //   alignItems: "center",
+            // }}
+              onClick={() => {
+                handleDeleteFromFavorites(id);
             }}
           />
+          </StyledButtonWrapper>
         ) : (
-            <Button text={<IconFavoriteNormal/>}
-            onClick={() => {
-              handleAddToFavorite(auto);
-            }}
-          />
+          <StyledButtonWrapper>
+            <Button text={<IconFavoriteNormal/>} 
+              onClick={() => {
+                handleAddToFavorite(auto);
+              }}
+            />
+          </StyledButtonWrapper>
         )}
-      </div>
-      <div>
-        <h2>{make}{' '}
-          <span>{model}</span>,{' '}
+      </StyledImgWrapper>
+      <StyledTitleWrapper>
+        <StyledTitle>{make}{' '}
+          <StyledTitleAccent>{model}</StyledTitleAccent>,{' '}
           {year}
-        </h2>
-        <span>{rentalPrice}</span>
-      </div>
-      <ul>
-        <li>{city}</li>
-        <li>{country}</li>
-        <li>{rentalCompany}</li>
-        <li>{premium}</li>
-      </ul>
-      <ul>
-        <li>{formattedType}</li>
-        <li>{model}</li>
-        <li>{id}</li>
-        <li>{displayedAccessory}</li>
-      </ul>
+        </StyledTitle>
+        <StyledSpan>{rentalPrice}</StyledSpan>
+      </StyledTitleWrapper>
+      <StyledCountryList>
+        <StyledCountryItem>{city}</StyledCountryItem>
+        <StyledCountryItem>{country}</StyledCountryItem>
+        <StyledCountryItem>{rentalCompany}</StyledCountryItem>
+        {premium && <StyledCountryItem>{premium}</StyledCountryItem>}
+      </StyledCountryList>
+      <StyledCountryList>
+        <StyledCountryItem>{formattedType}</StyledCountryItem>
+        <StyledCountryItem>{model}</StyledCountryItem>
+        <StyledCountryItem>{id}</StyledCountryItem>
+        <StyledCountryItem>{displayedAccessory}</StyledCountryItem>
+      </StyledCountryList>
       <Button text="Learn more"
+        // style={{
+        //   borderRadius: '12px',
+        //   padding: '12px 99px',
+        //   width: '274px',
+        //   height: '44px',
+        // }}
         onClick={() => dispatch(openModal({ 
           img, 
           make, 
@@ -89,7 +108,7 @@ const AutoCard = ({ auto }) => {
           rentalPrice 
         }))}
       />
-    </li>
+    </StyledItemWrapper>
   );
 };
 

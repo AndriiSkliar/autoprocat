@@ -24,15 +24,13 @@ const AutosList = ({ autos = [], searchResult = [] }) => {
   })}
   
    return (
-     <StyledList>
-      <ul className="autosList">
-        {sortedData.map((auto) => (
-          <AutoCard
-            key={auto.id}
-            auto={auto}
-          />
-        ))}
-      </ul>
+    <StyledList className="autosList">
+      {sortedData.map((auto) => (
+        <AutoCard
+          key={auto.id}
+          auto={auto}
+        />
+      ))}
     </StyledList>
   );
 };

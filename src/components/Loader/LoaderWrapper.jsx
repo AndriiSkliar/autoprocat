@@ -29,6 +29,7 @@ export const LoaderWrapper = styled.div`
   display: flex;
   justify-content: center;
   overflow: hidden;
+  z-index: 1;
 `;
 
 export const IconAutoWrapper = styled.div`
