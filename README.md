@@ -1,24 +1,46 @@
-AutoPtoCat Welcome to AutoPtoCat, your one-stop destination for renting cars,
-contacting managers, and saving favorite listings. Whether you're planning a
-road trip or just need a temporary ride, AutoPtoCat has got you covered.
+# AutoPtoCat
 
-![pages](page.jpg)
+Welcome to AutoPtoCat, your one-stop destination for renting cars, contacting
+managers, and saving favorite listings. Whether you're planning a road trip or
+just need a temporary ride, AutoPtoCat has got you covered.
 
-Technologies used Frontend: React, Redux, Styled-components, formik,
-react-toastify, redux-persist Backend: https://mockapi.io/ Additional Tools:
-Axios, React-router-dom
+![Pages](page.jpg)
 
-Live Demo Check out our live demo here
-[andriiskliar.github.io/autoprocat/](https://andriiskliar.github.io/autoprocat/)
+## Technologies Used
 
-Getting Started To get started with AutoPtoCat locally, follow these steps:
+- **Frontend:** React, Redux, Styled-components, Formik, React-Toastify,
+  Redux-Persist
+- **Backend:** [MockAPI](https://mockapi.io/)
+- **Additional Tools:** Axios, React-Router-Dom
 
-Installation
+## Live Demo
 
-1. Clone the repository: git clone https://github.com/AndriiSkliar/autoprocat
-2. Navigate to the project directory: cd autoprocat
-3. Install dependencies: npm install
-4. Running the Project
+Check out our live demo [here](https://andriiskliar.github.io/autoprocat/)
+
+## Getting Started
+
+To get started with AutoPtoCat locally, follow these steps:
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/AndriiSkliar/autoprocat
+   ```
+
+2. **Navigate to the project directory:**
+
+   ```bash
+   cd autoprocat
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+### Running the Project
 
 Features Car Listings: Browse through a wide range of car listings with detailed
 information. Contact Manager: Easily contact the manager for inquiries or
