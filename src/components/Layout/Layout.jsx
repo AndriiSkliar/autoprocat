@@ -1,14 +1,14 @@
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import { Wrapper } from './Layout.Styled';
+import {StyledWrapperDiv } from './Layout.styled';
 
 const Layout = ({ children }) => {
   return (
-    <Wrapper>
+    <StyledWrapperDiv>
       <Header/>
       <>{children}</>
       <Footer />
-    </Wrapper>
+    </StyledWrapperDiv>
   );
 };
 
