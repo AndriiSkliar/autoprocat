@@ -20,7 +20,7 @@ export const StyledPopUp = styled.div`
     max-width: 541px;
     width: 100%;
     min-height: 752px;
-    overflow-y: scroll;
+    overflow-y: auto;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
