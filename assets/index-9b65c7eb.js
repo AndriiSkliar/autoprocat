@@ -138,7 +138,7 @@ Error generating stack: `+i.message+`
   } 
 `,Ck=xt.div`
   position: fixed;
-  top: 40%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -147,4 +147,4 @@ Error generating stack: `+i.message+`
   z-index: 1;
 `,Pk=xt.div`
   animation: ${_k} 1s linear 0s infinite normal forwards running;
-`,Ok=()=>j.jsx(Ck,{children:j.jsx(Pk,{children:j.jsx(xk,{})})}),Rk=x.lazy(()=>Ic(()=>import("./HomePage-67b8fffd.js"),[])),Tk=x.lazy(()=>Ic(()=>import("./CatalogPage-2697d457.js"),["assets/CatalogPage-2697d457.js","assets/PopUp-15951aea.js"])),Nk=x.lazy(()=>Ic(()=>import("./FavoritesPage-0db4307f.js"),["assets/FavoritesPage-0db4307f.js","assets/PopUp-15951aea.js"]));function Lk(){return j.jsx(kk,{children:j.jsx(x.Suspense,{fallback:j.jsx(Ok,{}),children:j.jsxs(o1,{children:[j.jsx(jr,{index:!0,path:"/",element:j.jsx(Rk,{})}),j.jsx(jr,{path:"/catalog",element:j.jsx(Tk,{})}),j.jsx(jr,{path:"/favorites",element:j.jsx(Nk,{})}),j.jsx(jr,{path:"*",element:j.jsx(n1,{to:"/"})})]})})})}Vs.createRoot(document.getElementById("root")).render(j.jsxs(Mv,{store:vy,children:[j.jsx(xm,{persistor:a2,children:j.jsx(c1,{basename:"/autoprocat",children:j.jsx(Lk,{})})}),j.jsx(n2,{})]}));export{Ok as L,zk as a,Ak as b,zs as c,Fk as d,jk as e,$s as f,Gy as g,js as h,$k as i,j,Dk as k,Mk as l,Bk as m,Uk as o,x as r,xt as u};
+`,Ok=()=>j.jsx(Ck,{children:j.jsx(Pk,{children:j.jsx(xk,{})})}),Rk=x.lazy(()=>Ic(()=>import("./HomePage-83638272.js"),[])),Tk=x.lazy(()=>Ic(()=>import("./CatalogPage-4316867c.js"),["assets/CatalogPage-4316867c.js","assets/PopUp-9ac6ab96.js"])),Nk=x.lazy(()=>Ic(()=>import("./FavoritesPage-530eb8df.js"),["assets/FavoritesPage-530eb8df.js","assets/PopUp-9ac6ab96.js"]));function Lk(){return j.jsx(kk,{children:j.jsx(x.Suspense,{fallback:j.jsx(Ok,{}),children:j.jsxs(o1,{children:[j.jsx(jr,{index:!0,path:"/",element:j.jsx(Rk,{})}),j.jsx(jr,{path:"/catalog",element:j.jsx(Tk,{})}),j.jsx(jr,{path:"/favorites",element:j.jsx(Nk,{})}),j.jsx(jr,{path:"*",element:j.jsx(n1,{to:"/"})})]})})})}Vs.createRoot(document.getElementById("root")).render(j.jsxs(Mv,{store:vy,children:[j.jsx(xm,{persistor:a2,children:j.jsx(c1,{basename:"/autoprocat",children:j.jsx(Lk,{})})}),j.jsx(n2,{})]}));export{Ok as L,zk as a,Ak as b,zs as c,Fk as d,jk as e,$s as f,Gy as g,js as h,$k as i,j,Dk as k,Mk as l,Bk as m,Uk as o,x as r,xt as u};
