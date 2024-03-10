@@ -5,7 +5,7 @@ import { openModal } from '../../redux/modal/modal.reducer';
 import { ReactComponent as IconFavoriteNormal } from 'assets/icons/favorite-normal.svg'
 import { ReactComponent as IconFavoriteActive } from 'assets/icons/favorite-active.svg'
 import Button from '../Button/Button'
-import { StyledItemWrapper, StyledImgWrapper, StyledButtonWrapper, StyledTitleWrapper, StyledTitle, StyledTitleAccent, StyledSpan, StyledCountryList, StyledCountryItem } from './AutoCard.styled';
+import { StyledItemWrapper, StyledImgWrapper, StyledButtonWrapper, StyledTitleWrapper, StyledTitle, StyledTitleAccent, StyledSpan, SpecificStyledCountryList, StyledCountryItem, StyledBtnLearnMore, StyledCountryList } from './AutoCard.styled';
 
 const AutoCard = ({ auto }) => {
   const {img, make, model, year, rentalPrice, address, rentalCompany, type, id, functionalities, fuelConsumption, engineSize, description, accessories, rentalConditions, mileage } = auto;
@@ -39,7 +39,7 @@ const AutoCard = ({ auto }) => {
         <img src={img} alt={make + model}  className="autoImg"/>
         {inFavorites ? (
           <StyledButtonWrapper>
-            <Button text={<IconFavoriteActive />} 
+            <Button text={<IconFavoriteActive />}
               onClick={() => {
                 handleDeleteFromFavorites(id);
             }}
@@ -47,7 +47,7 @@ const AutoCard = ({ auto }) => {
           </StyledButtonWrapper>
         ) : (
           <StyledButtonWrapper>
-            <Button text={<IconFavoriteNormal/>} 
+            <Button text={<IconFavoriteNormal/>}
               onClick={() => {
                 handleAddToFavorite(auto);
               }}
@@ -68,14 +68,13 @@ const AutoCard = ({ auto }) => {
         <StyledCountryItem>{rentalCompany}</StyledCountryItem>
         {premium && <StyledCountryItem>{premium}</StyledCountryItem>}
       </StyledCountryList>
-      <StyledCountryList>
+      <SpecificStyledCountryList>
         <StyledCountryItem>{formattedType}</StyledCountryItem>
         <StyledCountryItem>{model}</StyledCountryItem>
         <StyledCountryItem>{id}</StyledCountryItem>
         <StyledCountryItem>{displayedAccessory}</StyledCountryItem>
-      </StyledCountryList>
-      <Button text="Learn more"
-        onClick={() => dispatch(openModal({ 
+      </SpecificStyledCountryList>
+      <StyledBtnLearnMore onClick={() => dispatch(openModal({ 
           img, 
           make, 
           model, 
@@ -92,8 +91,8 @@ const AutoCard = ({ auto }) => {
           rentalConditions, 
           mileage, 
           rentalPrice 
-        }))}
-      />
+      }))}>Learn more
+      </StyledBtnLearnMore>
     </StyledItemWrapper>
   );
 };

@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../redux/modal/modal.reducer';
 import { selectModalData } from '../../redux/selectors/modal.selectors';
-import Button from '../Button/Button';
-import { StyledPopUp } from './Styled';
+import { ReactComponent as IconClose } from 'assets/icons/close-btn.svg'
+import { AdditionalStyledTitleFunc, StyledImgPopWrapper, StyledPopUp, StyledTextDesc, StyledTitleAccentPop, StyledTitleFunc, StyledTitlePop, ConditionsListPop, ConditionsListItem, BeforeColon, AfterColon, PhoneLink, StyledTitleWrapper } from './PopUp.styled';
+import { StyledCountryItem, StyledCountryList } from '../AutoCard/AutoCard.styled';
 
 const PopUp = () => {
   const dispatch = useDispatch();
@@ -21,14 +22,14 @@ const PopUp = () => {
       const afterColon = condition.substring(colonIndex + 1);
 
       return (
-        <li key={i}>
-          <span className="before-colon">{beforeColon}</span>
-          <span className="after-colon">{afterColon}</span>
-        </li>
+        <ConditionsListItem key={i}>
+          <BeforeColon>{beforeColon}</BeforeColon>
+          <AfterColon>{afterColon}</AfterColon>
+        </ConditionsListItem>
       );
     } else {
 
-      return <li key={i}>{condition}</li>;
+      return <ConditionsListItem key={i}>{condition}</ConditionsListItem>;
     }
   });
   
@@ -57,44 +58,46 @@ const PopUp = () => {
   return (
     <StyledPopUp onClick={handleOverlayClick}>
       <div className="popUp">
-        <Button className="closeBtn" text="❌" onClick={() => dispatch(closeModal())}/>
-        <div>
-          <img src={img} alt={make + model} />
-        </div>
-        <div>
-          <h2>{make}{' '}
-            <span>{model}</span>,{' '}
+        <button className="closeBtn" onClick={() => dispatch(closeModal())}>
+          <IconClose/>
+        </button>
+        <StyledImgPopWrapper>
+          <img className='autoPopImg' src={img} alt={make + model} />
+        </StyledImgPopWrapper>
+        <StyledTitleWrapper>
+          <StyledTitlePop>{make}{' '}
+            <StyledTitleAccentPop>{model}</StyledTitleAccentPop>,{' '}
             {year}
-          </h2>
-        </div>
-        <ul>
-          <li>{city}</li>
-          <li>{country}</li>
-          <li>Id: {id}</li>
-          <li>Year: {year}</li>
-          <li>Type: {formattedType}</li>
-        </ul>
-        <ul>
-          <li>Fuel Consumption: {fuelConsumption}</li>
-          <li>Engine Size: {engineSize}</li>
-        </ul>
-        <p>{description}</p>
-        <h3>Accessories and functionalities:</h3>
-        <ul>
+          </StyledTitlePop>
+        </StyledTitleWrapper>
+        <StyledCountryList>
+          <StyledCountryItem>{city}</StyledCountryItem>
+          <StyledCountryItem>{country}</StyledCountryItem>
+          <StyledCountryItem>Id: {id}</StyledCountryItem>
+          <StyledCountryItem>Year: {year}</StyledCountryItem>
+          <StyledCountryItem>Type: {formattedType}</StyledCountryItem>
+        </StyledCountryList>
+        <StyledCountryList>
+          <StyledCountryItem>Fuel Consumption: {fuelConsumption}</StyledCountryItem>
+          <StyledCountryItem>Engine Size: {engineSize}</StyledCountryItem>
+        </StyledCountryList>
+        <StyledTextDesc>{description}</StyledTextDesc>
+        <StyledTitleFunc>Accessories and functionalities:</StyledTitleFunc>
+        <StyledCountryList>
           {accessories.map((accessorie, i) => (
-            <li key={i}>{accessorie}</li>
+            <StyledCountryItem key={i}>{accessorie}</StyledCountryItem>
           ))}
-        </ul>
-        <ul>
+        </StyledCountryList>
+        <StyledCountryList>
           {functionalities.map((functionalitie, i) => (
-            <li key={i}>{functionalitie}</li>
+            <StyledCountryItem key={i}>{functionalitie}</StyledCountryItem>
           ))}
-        </ul>
-        <h3>Rental Conditions:</h3>
-        <ul>
+        </StyledCountryList>
+        <AdditionalStyledTitleFunc>Rental Conditions:</AdditionalStyledTitleFunc>
+        <ConditionsListPop>
           {conditionsList}
-        </ul>
-        <a href="tel:+380730000000" type="button" target="_blank" rel="noreferrer noopener">Rental car</a>
+        </ConditionsListPop>
+        <PhoneLink href="tel:+380730000000" type="button" target="_blank" rel="noreferrer noopener">Rental car</PhoneLink>
       </div>
     </StyledPopUp>
   );

@@ -6,11 +6,10 @@ import { incrementPage, decrementPage, reset } from '../../redux/autos/autos.red
 import { selectIsOpenModal } from '../../redux/selectors/modal.selectors';
 import NotFound from '../../components/NotFound/NotFound';
 import AutosList from '../../components/AutosList/AutosList';
-import Button from '../../components/Button/Button';
 import PopUp from '../../components/PopUp/PopUp';
 import Loader from '../../components/Loader/Loader';
 import UserForm from '../../components/UserForm/UserForm';
-import { Main } from './CatalogPage.styled';
+import { Main, StyledBtnLoadMore } from './CatalogPage.styled';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -68,10 +67,10 @@ const CatalogPage = () => {
       )}
 
       {shouldShowLoadMoreButton && (
-        <Button text="Load more..." onClick={handleLoadMoreClick} />
+        <StyledBtnLoadMore onClick={handleLoadMoreClick}>Load more...</StyledBtnLoadMore>
       )}
       {searchShowLoadMoreButton && (
-        <Button text="Load more..." onClick={handleSearchLoadMoreClick} />
+        <StyledBtnLoadMore onClick={handleSearchLoadMoreClick}>Load more...</StyledBtnLoadMore>
       )}
 
       {isOpenModal && <PopUp />}

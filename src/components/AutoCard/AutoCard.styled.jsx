@@ -31,10 +31,10 @@ export const StyledButtonWrapper = styled.div`
 `;
 
 export const StyledTitleWrapper = styled.div`
-    margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 8px;
 `;
 
 export const StyledTitle = styled.h2`
@@ -58,7 +58,7 @@ export const StyledSpan = styled.span`
 export const StyledCountryList = styled.ul`
     display: flex;
     gap: 6px;
-
+    margin-bottom: 4px;
 `;
 
 export const StyledCountryItem = styled.li`
@@ -67,10 +67,34 @@ export const StyledCountryItem = styled.li`
     line-height: 18px;
     padding-right: 6px;
     border-right: 1px solid rgba(18, 20, 23, 0.1);
-    margin-bottom: 4px;
 
     &:last-child {
         border-right: none;
         padding-right: 0;
     }
+`;
+
+export const SpecificStyledCountryList = styled(StyledCountryList)`
+  margin-bottom: 28px;
+`;
+
+export const StyledBtnLearnMore = styled.button`
+    border-radius: 12px;
+    width: 100%;
+    padding: 12px 0;
+    background: #3470ff;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px; 
+    color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border: 0;
+    transition: background-color var(--transition);
+
+    &:hover,
+    &:focus {
+    background-color: #0b44cd;
+  }
 `;
