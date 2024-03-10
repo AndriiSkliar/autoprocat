@@ -4,6 +4,7 @@ import { addToFavorites, removeFromFavorites } from '../../redux/autos/autos.red
 import { openModal } from '../../redux/modal/modal.reducer';
 import { ReactComponent as IconFavoriteNormal } from 'assets/icons/favorite-normal.svg'
 import { ReactComponent as IconFavoriteActive } from 'assets/icons/favorite-active.svg'
+import { ReactComponent as IconDefaultAuto } from 'assets/icons/default-auto.svg'
 import Button from '../Button/Button'
 import { StyledItemWrapper, StyledImgWrapper, StyledButtonWrapper, StyledTitleWrapper, StyledTitle, StyledTitleAccent, StyledSpan, SpecificStyledCountryList, StyledCountryItem, StyledBtnLearnMore, StyledCountryList } from './AutoCard.styled';
 
@@ -36,7 +37,7 @@ const AutoCard = ({ auto }) => {
   return (
     <StyledItemWrapper>
       <StyledImgWrapper>
-        <img src={img} alt={make + model}  className="autoImg"/>
+        {img ? (<img src={img} alt={`${make} ${model}`} className="autoImg" />) : (<IconDefaultAuto />)}
         {inFavorites ? (
           <StyledButtonWrapper>
             <Button text={<IconFavoriteActive />}

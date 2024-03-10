@@ -4,6 +4,7 @@ import { closeModal } from '../../redux/modal/modal.reducer';
 import { selectModalData } from '../../redux/selectors/modal.selectors';
 import { ReactComponent as IconClose } from 'assets/icons/close-btn.svg'
 import { AdditionalStyledTitleFunc, StyledImgPopWrapper, StyledPopUp, StyledTextDesc, StyledTitleAccentPop, StyledTitleFunc, StyledTitlePop, ConditionsListPop, ConditionsListItem, BeforeColon, AfterColon, PhoneLink, StyledTitleWrapper } from './PopUp.styled';
+import { ReactComponent as IconDefaultAuto } from 'assets/icons/default-auto.svg'
 import { StyledCountryItem, StyledCountryList } from '../AutoCard/AutoCard.styled';
 
 const PopUp = () => {
@@ -62,8 +63,7 @@ const PopUp = () => {
           <IconClose/>
         </button>
         <StyledImgPopWrapper>
-          <img className='autoPopImg' src={img} alt={make + model} />
-        </StyledImgPopWrapper>
+          {(img && img.length > 0) ? (<img className='autoPopImg' src={img} alt={`${make} ${model}`} />) : (<IconDefaultAuto />)}        </StyledImgPopWrapper>
         <StyledTitleWrapper>
           <StyledTitlePop>{make}{' '}
             <StyledTitleAccentPop>{model}</StyledTitleAccentPop>,{' '}
