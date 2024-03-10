@@ -4,7 +4,7 @@ Welcome to AutoPtoCat, your one-stop destination for renting cars, contacting
 managers, and saving favorite listings. Whether you're planning a road trip or
 just need a temporary ride, AutoPtoCat has got you covered.
 
-<img src="./assets/img/page-readme.jpg" alt="my project" />
+![My Project](./assets/img/page-readme.jpg)
 
 ## Technologies Used
 
@@ -42,13 +42,19 @@ To get started with AutoPtoCat locally, follow these steps:
 
 ### Running the Project
 
-Features Car Listings: Browse through a wide range of car listings with detailed
-information. Contact Manager: Easily contact the manager for inquiries or
-bookings. Favorites: Save your favorite listings for quick access later.
+## Features
 
-Contribution We welcome contributions from the community. If you'd like to
-contribute, please create a pull request or open an issue with your suggestions
-or changes.
+- **Car Listings:** Browse through a wide range of car listings with detailed
+  information.
+- **Contact Manager:** Easily contact the manager for inquiries or bookings.
+- **Favorites:** Save your favorite listings for quick access later.
 
-Contact For any inquiries or support, feel free to contact us at
+## Contribution
+
+We welcome contributions from the community. If you'd like to contribute, please
+create a pull request or open an issue with your suggestions or changes.
+
+## Contact
+
+For any inquiries or support, feel free to contact us at
 andreas.skliar@gmail.com
