@@ -3,8 +3,11 @@
 Welcome to AutoPtoCat, your one-stop destination for renting cars, contacting
 managers, and saving favorite listings. Whether you're planning a road trip or
 just need a temporary ride, AutoPtoCat has got you covered.
+![My Project](./assets/img/page-readme.jpg)
 
 ![My Project](https://github.com/AndriiSkliar/autoprocat/blob/main/assets/img/page-readme.jpg)
+
+<img src="./assets/img/page-readme.jpg" alt="my_project" />
 
 ## Technologies Used
 
