@@ -106,4 +106,10 @@ export const StyledButton = styled.button`
     font-size: 14px;
     line-height: 1.42857;
     color: var(--background-color);
+    transition: background-color var(--transition);
+
+    &:hover,
+    &:focus {
+    background-color: #0b44cd;
+    }
 `;
