@@ -1,4 +1,4 @@
-# AutoPtoCat
+# AutoProCat
 
 Welcome to AutoPtoCat, your one-stop destination for renting cars, contacting
 managers, and saving favorite listings. Whether you're planning a road trip or
